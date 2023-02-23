@@ -1,0 +1,7 @@
+Bundle-Name: StationX-api
+Bundle-SymbolicName: com.sx.util.visualizer
+Bundle-Version: 1.0.0
+Export-Package: \
+	com.sx.util.visualizer.api,\
+	com.sx.debug,\
+	com.sx.constant
