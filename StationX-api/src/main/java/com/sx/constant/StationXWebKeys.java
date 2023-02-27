@@ -39,6 +39,7 @@ public class StationXWebKeys {
 	public static final String REQUIRED = "required";
 	public static final String ROW_IDS = "rowIds";
 	public static final String SELECT_DATATYPE = "selectDataType";
+	public static final String SELECT_STRUCTURED_DATA = "selectStructuredData";
 	public static final String SELECT_TERM = "selectTerm";
 	public static final String SELECTED_GROUP_ID = "selectedGroupId";
 	public static final String SELECTED_GROUP_IDS = "selectedGroupIds";
@@ -48,6 +49,8 @@ public class StationXWebKeys {
 	public static final String SHOW_SCHEDULED = "showScheduled";
 	public static final String STATUS = "status";
 	public static final String STRING_UTIL = "stringUtil";
+	public static final String STRUCTURED_DATA_ID = "structuredDataId";
+	public static final String STRUCTURED_DATA_IDS = "structuredDataIds";
 	public static final String TAG = "tag";
 	public static final String TAGS = "tags";
 	public static final String TERM_DISPLAY_CONTEXT = "termDisplayContext";
