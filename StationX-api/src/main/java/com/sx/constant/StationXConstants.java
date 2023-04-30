@@ -1,6 +1,11 @@
 package com.sx.constant;
 
 public class StationXConstants {
+	public static final String CRF_FILE_FOLDER_NAME = "CRF";
+	
+	public static final String CMD_ADD = "add";
+	public static final String CMD_UPDATE = "update";
+	
 	public static final String ASC = "asc";
 	public static final String DSC = "desc";
 	

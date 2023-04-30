@@ -17,6 +17,7 @@ public class StationXWebKeys {
 	public static final String DISPLAY_STYLE = "displayStyle";
 	public static final String EVENT_NAME = "eventName";
 	public static final String GROUP_ID = "groupId";
+	public static final String HAS_FILE = "hasFile";
 	public static final String HELP_MESSAGE = "helpMessage";
 	public static final String HTML_UTIL = "htmlUtil";
 	public static final String JSON_TERM = "jsonTerm";
@@ -24,6 +25,7 @@ public class StationXWebKeys {
 	public static final String KEYWORDS = "keywords";
 	public static final String LABEL = "label";
 	public static final String LISTABLE = "listable";
+	public static final String MANAGEMENT_TOOLBAR_DISPLAY_CONTEXT = "managementToolbarDisplayContext";
 	public static final String MULTIPLE_SELECTION = "multipleSelection";
 	public static final String MVC_ACTION_COMMAND_NAME = "mvcActionCommandName";
 	public static final String MVC_PATH = "mvcPath";
@@ -34,6 +36,7 @@ public class StationXWebKeys {
 	public static final String ORDER_BY_COL = "orderByCol";
 	public static final String ORDER_BY_TYPE = "orderByType";
 	public static final String PLACE_HOLDER = "placeHolder";
+	public static final String PLID = "plid";
 	public static final String REDIRECT = "redirect";
 	public static final String RENDER_TYPE = "renderType";
 	public static final String REQUIRED = "required";
