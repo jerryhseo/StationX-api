@@ -1,6 +1,7 @@
 package com.sx.constant;
 
 public class StationXWebKeys {
+	public static final String ABSTRACT_FIELDS = "abstractFields";
 	public static final String BACK_URL = "backURL";
 	public static final String CATEGORY_ID = "categoryId";
 	public static final String CATEGORY_IDS = "categoryIds";
