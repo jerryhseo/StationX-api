@@ -42,6 +42,7 @@ public class StationXWebKeys {
 	public static final String RENDER_TYPE = "renderType";
 	public static final String REQUIRED = "required";
 	public static final String ROW_IDS = "rowIds";
+	public static final String SEARCH_QUERY = "searchQuery";
 	public static final String SELECT_DATATYPE = "selectDataType";
 	public static final String SELECT_STRUCTURED_DATA = "selectStructuredData";
 	public static final String SELECT_TERM = "selectTerm";
