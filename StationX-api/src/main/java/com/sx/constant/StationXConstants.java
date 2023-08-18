@@ -23,6 +23,9 @@ public class StationXConstants {
 	public static final String LIST_DISPLAY_STYLE_SELECT = "select";
 	public static final String LIST_DISPLAY_STYLE_RADIO = "radio";
 	public static final String LIST_DISPLAY_STYLE_CHECK = "check";
+
+	public static final String DEFAULT_DATE_FORMAT = "yyyy. MM. dd.";
+	public static final String DEFAULT_DATE_TIME_FORMAT = "yyyy. MM. dd. h:m";
 	
 	public static final String[] NAVIGATION_KEYS() {
 		return new String[] { NAVIGATION_ALL, NAVIGATION_GROUP, NAVIGATION_MINE };
