@@ -53,4 +53,30 @@ public class SXPortletURLUtil {
 		
 		return url.toString(); 
 	}
+	
+	public static final String createURL( 
+					PortletRequest portletRequest,
+					ThemeDisplay themeDisplay,
+					String portletId, 
+					Map<String, String[]> paramMap,
+					PortletMode portletMode,
+					WindowState windowState) throws PortalException, PortletModeException, WindowStateException {
+		
+		HttpServletRequest httpServletRequest = PortalUtil.getOriginalServletRequest( PortalUtil.getHttpServletRequest(portletRequest) );
+		
+		PortletURL url = PortletURLFactoryUtil.create(
+													httpServletRequest,
+													portletId, 
+													themeDisplay.getPlid(),
+													PortletRequest.RENDER_PHASE);
+		
+		url.setPortletMode(portletMode);
+		url.setWindowState(windowState);
+		
+		if( Validator.isNotNull(paramMap) && paramMap.size() > 0  ) {
+			url.setParameters( paramMap );
+		}
+	
+		return url.toString(); 
+	}
 }
