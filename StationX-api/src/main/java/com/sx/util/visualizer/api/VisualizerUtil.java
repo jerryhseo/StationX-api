@@ -23,21 +23,16 @@ public class VisualizerUtil {
 	public static VisualizerConfig getVisualizerConfig( RenderRequest renderRequest, PortletDisplay portletDisplay, User user ) {
 		VisualizerConfig config = new VisualizerConfig();
 		
-		Object showBorders = renderRequest.getParameter("showBorders");
+		boolean showBorders = ParamUtil.getBoolean( renderRequest, "showBorders", false );
 		
 		PortletPreferences preferences = portletDisplay.getPortletSetup();
-		if( showBorders != null ){
-			try {
-				config.showBorders = Boolean.valueOf((String)showBorders);
-				preferences.setValue("portletSetupShowBorders", String.valueOf(showBorders));
-				preferences.store();
-			}
-			catch( IOException | ReadOnlyException | ValidatorException e){
-				e.printStackTrace();
-			}
-		}
-		else {
-			config.showBorders = false;
+		config.showBorders = showBorders;
+		try {
+			preferences.setValue("portletSetupShowBorders", String.valueOf(showBorders));
+			preferences.store();
+		} catch (ReadOnlyException | ValidatorException | IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		
 		config.namespace = portletDisplay.getNamespace();
@@ -48,7 +43,7 @@ public class VisualizerUtil {
 		config.portletScroll = preferences.getValue("portletScroll", "");
 		
 		config.disabled = ParamUtil.getString(renderRequest, "disabled", "false");
-		config.connector = ParamUtil.getString(renderRequest, "connector", "");
+		config.employer = ParamUtil.getString(renderRequest, "employer", "");
 		
 		config.menuOptions = ParamUtil.getString(renderRequest, "menuOptions", "" );
 
@@ -56,14 +51,14 @@ public class VisualizerUtil {
 			JSONObject jsonMenuOptions = null;
 			try {
 				jsonMenuOptions = JSONFactoryUtil.createJSONObject( ParamUtil.getString(renderRequest, "menuOptions", "{}" ) );
-				jsonMenuOptions.put("menu",GetterUtil.getBoolean(preferences.getValue("menu", "true")));
-				jsonMenuOptions.put("sample",GetterUtil.getBoolean(preferences.getValue("sample", "true")));
-				jsonMenuOptions.put("openLocalFile",GetterUtil.getBoolean(preferences.getValue("openLocalFile", "true")));
-				jsonMenuOptions.put("openServerFile",GetterUtil.getBoolean(preferences.getValue("openServerFile", "true")));
-				jsonMenuOptions.put("save",GetterUtil.getBoolean(preferences.getValue("save", "true")));
-				jsonMenuOptions.put("saveAtLocal",GetterUtil.getBoolean(preferences.getValue("saveAtLocal", "true")));
-				jsonMenuOptions.put("download",GetterUtil.getBoolean(preferences.getValue("download", "true")));
-				jsonMenuOptions.put("upload",GetterUtil.getBoolean(preferences.getValue("upload", "true")));
+				jsonMenuOptions.put("menu",GetterUtil.getBoolean(preferences.getValue("menu", "false")));
+				jsonMenuOptions.put("sample",GetterUtil.getBoolean(preferences.getValue("sample", "false")));
+				jsonMenuOptions.put("openLocalFile",GetterUtil.getBoolean(preferences.getValue("openLocalFile", "false")));
+				jsonMenuOptions.put("openServerFile",GetterUtil.getBoolean(preferences.getValue("openServerFile", "false")));
+				jsonMenuOptions.put("save",GetterUtil.getBoolean(preferences.getValue("save", "false")));
+				jsonMenuOptions.put("saveAtLocal",GetterUtil.getBoolean(preferences.getValue("saveAtLocal", "false")));
+				jsonMenuOptions.put("download",GetterUtil.getBoolean(preferences.getValue("download", "false")));
+				jsonMenuOptions.put("upload",GetterUtil.getBoolean(preferences.getValue("upload", "false")));
 			} catch( JSONException e ) {
 				jsonMenuOptions = JSONFactoryUtil.createJSONObject();
 			}

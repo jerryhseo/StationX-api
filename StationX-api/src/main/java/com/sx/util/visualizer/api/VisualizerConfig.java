@@ -1,5 +1,9 @@
 package com.sx.util.visualizer.api;
 
+import com.liferay.portal.kernel.json.JSONException;
+import com.liferay.portal.kernel.json.JSONFactoryUtil;
+import com.liferay.portal.kernel.json.JSONObject;
+
 public class VisualizerConfig {
 	public boolean showBorders;
 	public String portletWidth;
@@ -7,7 +11,7 @@ public class VisualizerConfig {
 	public String portletScroll;
 	public String disabled;
 	public String initData;
-	public String connector;
+	public String employer;
 	public String menuOptions;
 	public String namespace;
 	public String portletId;
@@ -25,5 +29,27 @@ public class VisualizerConfig {
 		}
 		
 		return displayStyle;
+	}
+	
+	public String toString() {
+		JSONObject json = JSONFactoryUtil.createJSONObject();
+		
+		json.put("showBorders", showBorders);
+		json.put("portletWidth", portletWidth);
+		json.put("portletHeight", portletHeight);
+		json.put("portletScroll", portletScroll);
+		json.put("disabled", disabled);
+		json.put("initData", initData);
+		json.put("employer", employer);
+		json.put("menuOptions", menuOptions);
+		json.put("namespace", namespace);
+		json.put("portletId", portletId);
+		
+		try {
+			return json.toString( 4 );
+		} catch (JSONException e) {
+			e.printStackTrace();
+			return "";
+		}
 	}
 }
