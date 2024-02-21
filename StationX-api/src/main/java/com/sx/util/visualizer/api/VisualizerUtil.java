@@ -45,47 +45,34 @@ public class VisualizerUtil {
 		config.disabled = ParamUtil.getString(renderRequest, "disabled", "false");
 		config.employer = ParamUtil.getString(renderRequest, "employer", "");
 		
-		config.menuOptions = ParamUtil.getString(renderRequest, "menuOptions", "" );
-
-		if( config.menuOptions.isEmpty() ) {
-			JSONObject jsonMenuOptions = null;
-			try {
-				jsonMenuOptions = JSONFactoryUtil.createJSONObject( ParamUtil.getString(renderRequest, "menuOptions", "{}" ) );
-				jsonMenuOptions.put("menu",GetterUtil.getBoolean(preferences.getValue("menu", "false")));
-				jsonMenuOptions.put("sample",GetterUtil.getBoolean(preferences.getValue("sample", "false")));
-				jsonMenuOptions.put("openLocalFile",GetterUtil.getBoolean(preferences.getValue("openLocalFile", "false")));
-				jsonMenuOptions.put("openServerFile",GetterUtil.getBoolean(preferences.getValue("openServerFile", "false")));
-				jsonMenuOptions.put("save",GetterUtil.getBoolean(preferences.getValue("save", "false")));
-				jsonMenuOptions.put("saveAtLocal",GetterUtil.getBoolean(preferences.getValue("saveAtLocal", "false")));
-				jsonMenuOptions.put("download",GetterUtil.getBoolean(preferences.getValue("download", "false")));
-				jsonMenuOptions.put("upload",GetterUtil.getBoolean(preferences.getValue("upload", "false")));
-			} catch( JSONException e ) {
-				jsonMenuOptions = JSONFactoryUtil.createJSONObject();
-			}
-			
-			config.menuOptions = jsonMenuOptions.toString();
-		}
-		
-		System.out.println("Menu Options: "+config.menuOptions);
-
-		//Set initial repository 
-		config.initData = ParamUtil.getString(renderRequest, "initData", "{}");
-		String portletRepository = GetterUtil.getString(preferences.getValue("portletRepository", RepositoryTypes.USER_HOME.toString()));
-		JSONObject jsonInitData = null;
-		
 		try {
-			jsonInitData = JSONFactoryUtil.createJSONObject( config.initData );
-			String repositoryType = jsonInitData.getString("repositoryType", portletRepository);
-			jsonInitData.put("repositoryType", repositoryType );
-			String userScreenName = jsonInitData.getString("user", user.getScreenName() );
-			jsonInitData.put("user", userScreenName );
-			config.initData = jsonInitData.toString();
-		} catch( JSONException e ) {
-			jsonInitData = JSONFactoryUtil.createJSONObject();
+			config.menuOptions = JSONFactoryUtil.createJSONObject( ParamUtil.getString(renderRequest, "menuOptions", "{}" ) );
+			if( config.menuOptions.length() == 0) {
+				config.menuOptions.put("menu",GetterUtil.getBoolean(preferences.getValue("menu", "false")));
+				config.menuOptions.put("sample",GetterUtil.getBoolean(preferences.getValue("sample", "false")));
+				config.menuOptions.put("openLocalFile",GetterUtil.getBoolean(preferences.getValue("openLocalFile", "false")));
+				config.menuOptions.put("openServerFile",GetterUtil.getBoolean(preferences.getValue("openServerFile", "false")));
+				config.menuOptions.put("saveAsLocalFile",GetterUtil.getBoolean(preferences.getValue("saveAsLocalFile", "false")));
+				config.menuOptions.put("saveAsServerFile",GetterUtil.getBoolean(preferences.getValue("saveAsServerFile", "false")));
+				config.menuOptions.put("saveAsDBRecord",GetterUtil.getBoolean(preferences.getValue("saveAsDBRecord", "false")));
+				config.menuOptions.put("download",GetterUtil.getBoolean(preferences.getValue("download", "false")));
+			}
+		} catch (JSONException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
 		}
 		
-		
-		//System.out.println("Menu Options: "+config.menuOptions);
+		//Set initial repository 
+		try {
+			config.initData = JSONFactoryUtil.createJSONObject( ParamUtil.getString(renderRequest, "initData", "{}") );
+			String portletRepository = GetterUtil.getString(preferences.getValue("portletRepository", RepositoryTypes.USER_HOME.toString()));
+			String repositoryType = config.initData.getString("repositoryType", portletRepository);
+			config.initData.put("repositoryType", repositoryType );
+			String userScreenName = config.initData.getString("user", user.getScreenName() );
+			config.initData.put("user", userScreenName );
+		} catch( JSONException e ) {
+			config.initData = JSONFactoryUtil.createJSONObject();
+		}
 		
 		return config;
 	}

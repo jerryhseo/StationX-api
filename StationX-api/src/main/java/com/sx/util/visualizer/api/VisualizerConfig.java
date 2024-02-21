@@ -10,9 +10,9 @@ public class VisualizerConfig {
 	public String portletHeight;
 	public String portletScroll;
 	public String disabled;
-	public String initData;
+	public JSONObject initData;
 	public String employer;
-	public String menuOptions;
+	public JSONObject menuOptions;
 	public String namespace;
 	public String portletId;
 	

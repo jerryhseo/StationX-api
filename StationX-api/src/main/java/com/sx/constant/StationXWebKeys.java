@@ -10,6 +10,7 @@ public class StationXWebKeys {
 	public static final String CMD_DELETE_TERMS = "cmdDeleteTerms";
 	public static final String CONTROL_NAME = "controlName";
 	public static final String CONTROL_TYPE = "controlType";
+	public static final String DATA_PACKET = "dataPacket";
 	public static final String DATA_STRUCTURE = "dataStructure";
 	public static final String DATATYPE = "dataType";
 	public static final String DATATYPE_DISPLAY_CONTEXT = "dataTypeDisplayContext";
